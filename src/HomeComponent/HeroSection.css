@@ -1,0 +1,75 @@
+.hero-section{
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  margin-right: 200px;
+  justify-content: flex-start;
+}
+
+.background-text{
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  color: #474545;
+  transform: translate(-100%, -120%);
+  font-size: 100px;
+  z-index: 1;
+
+}
+
+.carousel-container{
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+}
+
+.carousel-content {
+    display: flex;
+    padding: 100px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    min-height: 500px;
+    width: 100%;
+  }
+  
+  .carousel-text {
+    flex: 1;
+    padding-right: 180px;
+    color: #fff;
+  }
+  
+  .carousel-text h3 {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  
+  .carousel-text p {
+    margin-bottom: 28px;
+  }
+  
+  .carousel-text pre {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .shop-button {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .shop-button:hover {
+    background-color: #e60000;
+  }
+  
+  .product-image {
+    flex: 1;
+    max-width: 40%;
+    object-fit: cover;
+    padding-left: 100px;
+  }
