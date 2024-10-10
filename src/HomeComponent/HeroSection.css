@@ -11,10 +11,11 @@
   position: absolute;
   top: 60%;
   left: 50%;
-  color: #474545;
+  font-size: 150px !important;
+  color: #453e3e;
   transform: translate(-100%, -120%);
   font-size: 100px;
-  z-index: 1;
+  z-index: 499;
 
 }
 

@@ -1,0 +1,137 @@
+/* extra styling for Homepage */
+
+
+.search-container {
+    width: 100%; /* or adjust as necessary */
+}
+
+.featured-item {
+    flex: 0 5 30%;
+    margin: 10px;
+}
+
+button{
+    color: white;
+    background-color: rgb(255, 0, 0);
+    border-radius: 15px;
+    border: none;
+    object-fit: fill;
+}
+
+.cart-popup {
+    position: fixed;  /* Fix the position to the viewport */
+    top: 30%;
+    bottom: 150%;
+    left: 50%;  
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;   /* Use Flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center;  /* Center vertically */
+   
+}
+
+.cart-content {
+    background-color: #fff; /* Background color for the cart content */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center; /* Center text inside */
+}
+
+/* header login controls */
+.modal-body{
+    background: transparent;
+    padding: 10p;
+}
+.form-control{
+    background-color: #aeb1b1;
+    border: 1px solid #b3e5fc;
+    color: #f9f2f2;
+
+}
+/* header login controls */
+
+ .carousel .carousel-item {
+    transition: transform 0.3s ease-in-out, opacity 0.5s ease;
+    text-align: center;
+}
+
+.pyramid-carousel .carousel-item.active {
+    transform: scale(1.5); /* Scale up the active item */
+    opacity: 0.8;
+}
+
+.pyramid-carousel .carousel-item-next,
+.pyramid-carousel .carousel-item-prev {
+    transform: scale(0.9); /* Scale down the next and previous items */
+    opacity: 0.1; /* Make it slightly transparent */
+}
+
+.pyramid-carousel .carousel-inner {
+    display: flex;
+}
+
+.featured-item {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 16px;
+    background-color: black;
+    max-width: 300px;
+    margin: 50px auto;
+}
+
+.pyramid-carousel img {
+    border-radius: 8px;
+    width: 80%;
+    height: auto;
+}
+
+.discount{
+    text-decoration: line-through;
+    color: grey;
+    font-size: 14px;
+  }
+
+.fa-solid{
+    font-size: 10px;
+}
+
+.dialog-box{
+    background: transparent;
+    top: 180%;
+    right: 50%;
+    padding: 20px;
+    border: 2px solid grey;
+}
+/* login modal styling */
+/* Custom modal background styling */
+.custom-modal .modal-content {
+    background-color: black;
+    color: white;
+    border: none; /* Optional: removes the border around the modal */
+}
+
+.custom-modal .modal-header,
+.custom-modal .modal-body,
+.custom-modal .modal-footer {
+    background-color: black;
+    color: white;
+}
+
+.custom-modal .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+/* Adjust button styles to stand out on black background */
+.custom-modal .btn-secondary {
+    background-color: grey;
+    border-color: grey;
+}
+
+
+.fa-xmark{
+    font-size: 24px;
+    cursor: pointer;
+    
+}
