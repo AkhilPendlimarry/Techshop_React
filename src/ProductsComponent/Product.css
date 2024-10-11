@@ -1,0 +1,26 @@
+/* General container styling */
+.all-products-container {
+    padding: 20px;
+}
+
+/* Sidebar styling */
+.sidebar {
+    background-color: #0e0e0e;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+/* Product card styling */
+.card {
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.1);
+}
+
+/* Category styling */
+.list-group-item {
+    font-size: 1.1rem;
+    padding: 10px;
+}
