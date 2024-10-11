@@ -135,3 +135,61 @@ button{
     cursor: pointer;
     
 }
+
+.browse-card{
+    border: 1px solid rgb(234, 173, 173);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-details{
+    text-decoration: none;
+    color: red;
+    
+}
+
+.sidebar{
+    background-color: black;
+}
+
+.side-list-group{
+    background: transparent;
+}
+
+.list-group-item:hover{
+    background-color: red;
+    border-radius: 2px solid;
+}
+
+.sidebar {
+    background-color: #2c2f33;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.sort-list, .brand-list, .category-list {
+    list-style: none;
+    padding: 0;
+}
+
+.sort-list li, .brand-list li, .category-list li {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.sort-list li input, .brand-list li input {
+    margin-right: 10px;
+}
+
+.list-group-item {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #3c3f43;
+}
+
+.list-group-item.active {
+    background-color: #7289da;
+    color: white;
+}
