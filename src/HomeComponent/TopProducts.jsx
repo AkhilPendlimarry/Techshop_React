@@ -1,5 +1,5 @@
 import { useState } from 'react';
-// import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom'; 
 import productsData from '../data/productsData';
 
 const TopProducts = () => {
@@ -20,7 +20,7 @@ const TopProducts = () => {
             </div>
             <div className="d-flex flex-wrap justify-content-center">
                 {displayProductCards.map(product => (
-                    <div className="product-card p-3 text-center" key={product.id} style={{ flex: "0 1 25%", margin: "10px", background: "#161717", color: "white", borderRadius: "8px" }}>
+                    <div className="card p-3 h-50 w-50 text-center" key={product.id} style={{ flex: "0 1 25%", margin: "10px", background: "#161717", color: "white", borderRadius: "8px" }}>
                         <img src={product.images[0]} alt={product.title} className="img-fluid mb-2" style={{ height: '100px', objectFit: 'contain' }} />
                         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '10px' }}>
                             {[...Array(product.rateCount)].map((index) => (
@@ -29,14 +29,14 @@ const TopProducts = () => {
                         </div>
                         <h5>{product.title}</h5>
                         <h6>{product.info}</h6>
-                        <p>${product.finalPrice}</p>
+                        <pre>${product.finalPrice}     <span className='discount'>${product.originalPrice}</span></pre>
                         <button className='text-white'>Add to Cart</button>
                     </div>
                 ))}
 
-                <div className='product-card p-2 text-center' style={{flex: "0 1 20%", margin: "10px", background: "#161717", color: "white", borderRadius: "8px"}}>
-                    {/* <Link to ="/ProductsPage" className='text-danger'>Browse all Products in here</Link> */}
-                        <h4>Browse here</h4>
+                <div className='browse-card p-2 text-center' style={{flex: "0 1 20%", margin: "10px", background: "#161717", color: "white", borderRadius: "8px"}}>
+                    <Link to ="/ProductsPage" className='product-details'>Browse all Products in here</Link>
+                       
                 </div>
                
             </div>
