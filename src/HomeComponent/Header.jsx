@@ -1,9 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FaSearch, FaShoppingCart, FaUserAlt } from 'react-icons/fa';
 import { Modal, Button, FormControl, ListGroup } from 'react-bootstrap';
 import productsData from '../data/productsData';
+import { useNavigate } from 'react-router-dom';
+
 
 const Header = () => {
+    const navigate = useNavigate(); 
     const [showSearch, setShowSearch] = useState(false);
     const [searchInput, setSearchInput] = useState("");
     const [suggestions, setSuggestions] = useState([]);
@@ -11,7 +14,7 @@ const Header = () => {
     const [isLogin, setIsLogin] = useState(true);  // toggle between login & register
     const [showDialog, setShowDialog] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
-    const [showCartPage, setShowCartPage] = useState(false);
+    //const [showCart, setShowCart] = useState(false);    
 
     const handleModalClose = () => {
         setShowModal(false);
@@ -20,7 +23,7 @@ const Header = () => {
 
     const handleSearchChange = (e) => {
         const query = e.target.value.toLowerCase();
-        setSearchInput(query);
+        setSearchInput(query); 
 
         const filteredProducts = productsData.filter(product =>
             product.title.toLowerCase().includes(query)
@@ -28,13 +31,6 @@ const Header = () => {
         setSuggestions(filteredProducts.length ? filteredProducts : [{ title: 'No products found' }]);
     };
 
-    const handleCartClick = () => {
-        setShowCartPage(true); // when cart icon clicks, show empty cart page.
-        };
-
-    const handleCartClose = () => {
-        setShowCartPage(false); // Close the cart page.
-        };
 
     const handleMouseEnter = () => {
         setShowDialog(true);
@@ -53,19 +49,9 @@ const Header = () => {
         setShowModal(true);
     };
 
-    useEffect(()=>{
-        const handleClickOutside=(e)=>{
-            const cartPopup = document.querySelector('.cart-popup');
-            const cartIcon = document.querySelector('.nav-link[title="Cart"]');
-            if (showCartPage && cartPopup && !cartPopup.contains(e.target) && !cartIcon.contains(e.target)) {
-                handleCartClose();
-            }
-        };
-        document.addEventListener('mousedown', handleClickOutside);
-        return() => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [showCartPage]);
+    const handleCartClick = () =>{
+        navigate('/CartPage');
+    }
 
     return (
         <>
@@ -107,9 +93,9 @@ const Header = () => {
                         </div>
 
                         {/* cart icon functionality */}
-                        <div className="nav-link ml-3" data-toggle="tooltip" title="Cart">
-                            <FaShoppingCart onClick={handleCartClick} />
-                        </div>
+                        <div className="nav-link ml-3" data-toggle="tooltip" title="Cart" onClick={handleCartClick}>
+                            <FaShoppingCart />   
+                        </div>   
 
                         {/* User Icon and Dialog Box */}
                         <div className="nav-link"
@@ -119,16 +105,6 @@ const Header = () => {
                         >
                             <FaUserAlt />
                         </div>
-
-                        {/* cart page display */}
-                        {showCartPage && (
-                            <div className='cart-popup'>
-                            <div className='cart-page container my-3 text-danger'>
-                                <h2>Cart is Empty</h2>
-                                <FaShoppingCart size={200}/>
-                            </div>
-                            </div>
-                        )}
 
                         {/* Persisting modal-dialog box */}
                         {showDialog && 
