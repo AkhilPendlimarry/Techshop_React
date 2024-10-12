@@ -52,6 +52,11 @@ const ProductsPage = () => {
         
     };
 
+    const isFiltered=()=>{
+        return(
+            category !== 'All' || selectedBrands.length > 0 || sortOption !== 'Latest' || priceRange[0] !== 0 || priceRange[1] !== 20000);
+        };
+
     // Handle brand filtering
     const handleBrandChange = (e) => {
         const { value, checked } = e.target;
@@ -73,8 +78,9 @@ const ProductsPage = () => {
                     <div className="sidebar p-3">
 
                           {/* render clear button if filters applied. */}
-                          {(category !== 'All' || selectedBrands.length > 0 || sortOption) 
-                                  && (<button className=' btn btn-danger mt-4' onClick={clearFilters}>
+
+                          {isFiltered() && 
+                                    (<button className=' btn btn-danger mt-4' onClick={clearFilters}>
                                          Clear Filters
                                     </button>
                                 )}
