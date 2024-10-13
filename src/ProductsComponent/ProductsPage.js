@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import productsData from '../data/productsData'; 
-import './Product.css';              
+import './Product.css';     
+import { useCart } from '../ProductsComponent/cartContext';         
 
 const ProductsPage = () => {
     const [category, setCategory] = useState('All'); // Initial state is "All"
@@ -10,6 +11,7 @@ const ProductsPage = () => {
     const [priceRange, setPriceRange] = useState([0, 20000]);
     const categories = ['All', 'HeadPhones', 'Earbuds', 'EarPhones', 'Neckbands'];
     const brands = ['JBL', 'BoAt', 'Sony'];
+    const { addToCart } = useCart();
 
     // Filter products by category and brand
     useEffect(() => {
@@ -175,8 +177,8 @@ const ProductsPage = () => {
                                     </div>
                                     <h5>{product.title}</h5>
                                     <h6>{product.info}</h6>
-                                    <pre>${product.finalPrice}     <span className='discount'>${product.originalPrice}</span></pre>
-                                    <button className='text-white'>Add to Cart</button>
+                                    <pre>${product.finalPrice} <span className='discount'>${product.originalPrice}</span></pre>
+                                    <button className='text-white'  onClick={() => addToCart(product)}>Add to Cart</button>
                                 </div>
                             ))
                         ) : (<p>No products found for this category.</p>)}

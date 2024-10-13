@@ -415,26 +415,4 @@ const productsData = [
 ];
 
 
-// Convert productsData array to a JSON string and storing it in localStorage
-const saveProductsToLocalStorage = () => {
-    if (!localStorage.getItem('productsData')) {
-        localStorage.setItem('productsData', JSON.stringify(productsData));
-    }
-};
-
-// Retrieve products data from localStorage
-const getProductsFromLocalStorage = () => {
-    const storedProducts = localStorage.getItem('productsData');
-    return storedProducts ? JSON.parse(storedProducts) : [];
-};
-
-// we can export these functions for future use in the application
-export { saveProductsToLocalStorage, getProductsFromLocalStorage };
-
-// Calling the function to save data to localStorage
-const getproducts = getProductsFromLocalStorage();
-
-console.log(getproducts);
-
-
 export default productsData;

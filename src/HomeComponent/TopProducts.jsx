@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; 
 import productsData from '../data/productsData';
+import { useCart } from '../ProductsComponent/cartContext';
 
 const TopProducts = () => {
+    const { addToCart } = useCart(); // Access addToCart from context
     const [category, setCategory] = useState("All");
 
     const filteredProducts = (category === "All")
         ? productsData : productsData.filter(product => product.category === category);
+
 
     const displayProductCards = filteredProducts.slice(0,10);
     return (
@@ -29,8 +32,8 @@ const TopProducts = () => {
                         </div>
                         <h5>{product.title}</h5>
                         <h6>{product.info}</h6>
-                        <pre>${product.finalPrice}     <span className='discount'>${product.originalPrice}</span></pre>
-                        <button className='text-white'>Add to Cart</button>
+                        <pre>${product.finalPrice} <span className='discount'>${product.originalPrice}</span></pre>
+                        <button className='text-white' onClick={() => addToCart(product)} >Add to Cart</button>
                     </div>
                 ))}
 
@@ -42,6 +45,7 @@ const TopProducts = () => {
             </div>
         </div>
     );
+    
 };
 
 export default TopProducts;

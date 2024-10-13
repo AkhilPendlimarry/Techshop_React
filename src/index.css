@@ -37,7 +37,10 @@ header{
     transform: scale(1.2);
 }
 
-
+.cart-items .cart-item{
+    color: rgb(25, 23, 23);
+    background-color: black;
+}
 }
 
 

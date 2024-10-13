@@ -3,6 +3,7 @@ import { FaSearch, FaShoppingCart, FaUserAlt } from 'react-icons/fa';
 import { Modal, Button, FormControl, ListGroup } from 'react-bootstrap';
 import productsData from '../data/productsData';
 import { useNavigate } from 'react-router-dom';
+import {useCart} from '../ProductsComponent/cartContext';
 
 
 const Header = () => {
@@ -14,7 +15,7 @@ const Header = () => {
     const [isLogin, setIsLogin] = useState(true);  // toggle between login & register
     const [showDialog, setShowDialog] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
-    //const [showCart, setShowCart] = useState(false);    
+    const [cartCount] = useCart();    
 
     const handleModalClose = () => {
         setShowModal(false);
@@ -95,6 +96,11 @@ const Header = () => {
                         {/* cart icon functionality */}
                         <div className="nav-link ml-3" data-toggle="tooltip" title="Cart" onClick={handleCartClick}>
                             <FaShoppingCart />   
+                            {cartCount > 0 && (
+                            <span className="cart-count-badge position-absolute" style={{ background: 'red', borderRadius: '50%', padding: '0.3rem 0.5rem', top: '-10px', right: '-10px', color: 'white' }}>
+                                {cartCount}
+                            </span>
+                        )}
                         </div>   
 
                         {/* User Icon and Dialog Box */}

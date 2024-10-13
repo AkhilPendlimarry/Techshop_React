@@ -1,11 +1,11 @@
 import React from 'react';
 // Importing the components into home page.
 import Header from './Header';
-import CartPage from '../ProductsComponent/CartPage';
 import HeroSection from './HeroSection';
 import FeaturedProducts from './FeaturedProducts';
 import TopProducts from './TopProducts';
 import Footer from './Footer';
+
 
 // Homepage Component
  const LandingPage = () => {
