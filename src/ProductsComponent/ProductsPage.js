@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import productsData from '../data/productsData'; 
+import { useCart } from './cartContext';
 import './Product.css';     
-import { useCart } from '../ProductsComponent/cartContext';         
+        
 
 const ProductsPage = () => {
     const [category, setCategory] = useState('All'); // Initial state is "All"
@@ -84,8 +85,8 @@ const ProductsPage = () => {
                           {isFiltered() && 
                                     (<button className=' btn btn-danger mt-4' onClick={clearFilters}>
                                          Clear Filters
-                                    </button>
-                                )}
+                                    </button>)
+                                }
 
 
                         <h4>Sort by</h4>
@@ -178,7 +179,7 @@ const ProductsPage = () => {
                                     <h5>{product.title}</h5>
                                     <h6>{product.info}</h6>
                                     <pre>${product.finalPrice} <span className='discount'>${product.originalPrice}</span></pre>
-                                    <button className='text-white'  onClick={() => addToCart(product)}>Add to Cart</button>
+                                    <button className='btn btn-danger mt-2' onClick={() => addToCart(product)}>Add to Cart</button>
                                 </div>
                             ))
                         ) : (<p>No products found for this category.</p>)}

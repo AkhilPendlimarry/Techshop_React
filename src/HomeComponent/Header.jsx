@@ -15,7 +15,7 @@ const Header = () => {
     const [isLogin, setIsLogin] = useState(true);  // toggle between login & register
     const [showDialog, setShowDialog] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
-    const [cartCount] = useCart();    
+    const {cartCount} = useCart();    
 
     const handleModalClose = () => {
         setShowModal(false);

@@ -6,16 +6,21 @@ import LandingPage from "./HomeComponent/LandingPage";
 import AllProductsPage from './ProductsComponent/AllProductsPage';
 import { Routes, Route } from 'react-router-dom';
 import CartPage from './ProductsComponent/CartPage';
+import { CartProvider } from './ProductsComponent/cartContext';
 
 const App = ()=> {
   return (
     <div>
+      <CartProvider>
       <Routes>
         <Route path='/' element={<LandingPage/>}/>
         <Route path='/ProductsPage' element={<AllProductsPage/>}/>
         <Route path='/CartPage' element={<CartPage/>}/>
       
       </Routes>
+
+      </CartProvider>
+      
       
     </div>
   );
