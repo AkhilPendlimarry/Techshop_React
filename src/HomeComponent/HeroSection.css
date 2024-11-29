@@ -28,7 +28,7 @@
 .carousel-content {
     display: flex;
     padding: 100px;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     padding: 0 50px;
     min-height: 500px;
@@ -70,7 +70,32 @@
   
   .product-image {
     flex: 1;
-    max-width: 40%;
-    object-fit: cover;
+    max-width: 50%;
+    object-fit:cover;
     padding-left: 100px;
+  }
+
+  .carousel-indicators{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+  }
+  .radio-indicator{
+    margin: 0 5px;
+  }
+  .radio-indicator input{
+    display: none;
+  }
+  .radio-indicator .custom-radio{
+    width: 12px;
+    height: 12px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+  }
+  .radio-indicator input:checked + .custom-radio{
+    background-color: #fa0b0bca;
+    border-color: #ef2004;
   }

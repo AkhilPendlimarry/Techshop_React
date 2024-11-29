@@ -7,6 +7,7 @@ import AllProductsPage from './ProductsComponent/AllProductsPage';
 import { Routes, Route } from 'react-router-dom';
 import CartPage from './ProductsComponent/CartPage';
 import { CartProvider } from './ProductsComponent/cartContext';
+import DetailedProductPage from './ProductsComponent/DetailedProductPage';
 
 const App = ()=> {
   return (
@@ -16,6 +17,8 @@ const App = ()=> {
         <Route path='/' element={<LandingPage/>}/>
         <Route path='/ProductsPage' element={<AllProductsPage/>}/>
         <Route path='/CartPage' element={<CartPage/>}/>
+        {/* added route for detailed product page */}
+        <Route path='/DetailedProductPage/:productId' element={<DetailedProductPage/>}/> 
       
       </Routes>
 

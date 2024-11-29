@@ -2,11 +2,13 @@ import React, {useState} from "react";
 import Slider from "react-slick";
 import productsData from '../data/productsData';
 import './FeaturedProdCarousel.css';
+import { useNavigate } from "react-router-dom";
 
 const FeaturedProducts = () => {
+  const navigate = useNavigate();
   const [hoveredIndex, setHoveredIndex] = useState(null);
-    const featuredProducts = productsData.filter(product => product.tag === "featured-product");
-    const settings={
+  const featuredProducts = productsData.filter(product => product.tag === "featured-product");
+  const settings={
       dots: true,
       infinite: true,
       slidesToShow: 5,
@@ -23,6 +25,12 @@ const FeaturedProducts = () => {
     const handleMouseLeave = () => {
         setHoveredIndex(null);
     };
+
+    const handleProductClick=(productId)=>{
+      const selectedProduct = productsData.find((product)=> product.id === productId);
+      navigate(`/DetailedProductPage/${productId}`, {state: selectedProduct});
+    };
+
     return (
         <div className="slider-container">
            <Slider {...settings}>
@@ -31,8 +39,10 @@ const FeaturedProducts = () => {
                       key={product.id} 
                       onMouseEnter={() => handleMouseEnter(index)}
                       onMouseLeave={handleMouseLeave}
+                      onClick={()=>handleProductClick(product.id)}
                     >
                         <div className="featured-item text-center">
+                            
                             <img
                                 src={product.images[0]}
                                 alt={product.title}

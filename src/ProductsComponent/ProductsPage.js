@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import productsData from '../data/productsData'; 
 import { useCart } from './cartContext';
 import './Product.css';     
+import { useNavigate } from 'react-router-dom';
         
 
 const ProductsPage = () => {
@@ -13,6 +14,7 @@ const ProductsPage = () => {
     const categories = ['All', 'HeadPhones', 'Earbuds', 'EarPhones', 'Neckbands'];
     const brands = ['JBL', 'BoAt', 'Sony'];
     const { addToCart } = useCart();
+    const navigate = useNavigate();
 
     // Filter products by category and brand
     useEffect(() => {
@@ -71,6 +73,12 @@ const ProductsPage = () => {
     // Handle sort option change
     const handleSortChange = (e) => {
         setSortOption(e.target.value);
+    };
+
+    // Handle product click to navigate to DetailedProductPage
+    const handleProductClick = (productId) => {
+        const selectedProduct = productsData.find(product => product.id === productId);
+        navigate(`/DetailedProductPage/${productId}`, { state: selectedProduct });
     };
 
     return (
@@ -169,7 +177,8 @@ const ProductsPage = () => {
                         {filteredProducts.length > 0 ? (
                             filteredProducts.map(product => (
                                 <div className="card h-50 text-white" key={product.id} 
-                                  style={{ flex: "0 1 25%", margin: "10px", background: "#161717", color: "white", borderRadius: "8px" }}>
+                                  style={{ flex: "0 1 20%", margin: "10px", background: "#161717", color: "white", borderRadius: "8px" }}
+                                  onClick={()=>handleProductClick(product.id)}>
                                     <img src={product.images[0]} alt={product.title} className="img-fluid mb-2" style={{ height: '100px', objectFit: 'contain' }} />
                                     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '10px' }}>
                                         {[...Array(product.rateCount)].map((_, index) => (

@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; 
+import { Link, useNavigate} from 'react-router-dom'; 
 import productsData from '../data/productsData';
 import { useCart } from '../ProductsComponent/cartContext';
 
 const TopProducts = () => {
+    const navigate = useNavigate();
     const { addToCart } = useCart(); // Access addToCart from context
     const [category, setCategory] = useState("All");
 
     const filteredProducts = (category === "All")
         ? productsData : productsData.filter(product => product.category === category);
 
-
+    const handleProductClick = (productId)=>{
+        const selectedProduct = productsData.find(product => product.id === productId);
+        navigate(`/DetailedProductPage/${productId}`, { state: selectedProduct });
+    }
     const displayProductCards = filteredProducts.slice(0,10);
+    
     return (
         <div className="container">
             <div className="d-flex justify-content-center mb-4">
@@ -23,7 +28,8 @@ const TopProducts = () => {
             </div>
             <div className="d-flex flex-wrap justify-content-center">
                 {displayProductCards.map(product => (
-                    <div className="card p-3 h-50 w-50 text-center" key={product.id} style={{ flex: "0 1 25%", margin: "10px", background: "#161717", color: "white", borderRadius: "8px" }}>
+                    <div className="card p-3 h-50 w-50 text-center" key={product.id} style={{ flex: "0 1 25%", margin: "10px", background: "#161717", color: "white", borderRadius: "8px" }}
+                     onClick={()=> handleProductClick(product.id)}>
                         <img src={product.images[0]} alt={product.title} className="img-fluid mb-2" style={{ height: '100px', objectFit: 'contain' }} />
                         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '10px' }}>
                             {[...Array(product.rateCount)].map((index) => (

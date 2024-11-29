@@ -56,6 +56,7 @@ const Header = () => {
 
     return (
         <>
+        <div className={showSearch ? 'dimmed-bg': ''}>
             <header className="bg-black text-white">
                 <nav className="d-flex justify-content-between align-items-center p-3">
                     <h1 className='navbar-brand'>TechShop</h1>
@@ -63,24 +64,19 @@ const Header = () => {
                     <div className="d-flex justify-content-between align-items-center w-25 position-relative" style={{ gap: '30px' }}>
                       <div className='search-container'>
                         {showSearch && (
-                            <div className="position-relative" 
-                            style={{ 
-                                top: '10px', 
-                                width: '100%', 
-                                margin: '0 auto',
-                                display: 'flex',
-                                justifyContent: 'flexstart' 
-                            }}>
+                            <div className="search-bar position-absolute justify-content-center align-items-center" 
+                             >
                                 <FormControl
                                     type="text"
                                     value={searchInput}
                                     onChange={handleSearchChange}
-                                    className="ml-5 bg-black text-white"
+                                    className="search-input ml-5 bg-black text-white"
+                                    placeholder='Search...'
                                 />
                                 {searchInput && (
-                                    <ListGroup className="position-absolute bg-black" style={{ zIndex: 1, top: '40px' }}>
+                                    <ListGroup className="position-absolute search-suggestion" style={{ zIndex: 1, top: '40px' }}>
                                         {suggestions.map((suggestion, index) => (
-                                            <ListGroup.Item key={index} className="search-suggestion bg-black text-white">
+                                            <ListGroup.Item key={index} className=" bg-black text-white">
                                                 {suggestion.title}
                                             </ListGroup.Item>
                                         ))}
@@ -97,7 +93,7 @@ const Header = () => {
                         <div className="nav-link ml-3" data-toggle="tooltip" title="Cart" onClick={handleCartClick}>
                             <FaShoppingCart />   
                             {cartCount > 0 && (
-                            <span className="cart-count-badge position-absolute" style={{ background: 'red', borderRadius: '50%', padding: '0.3rem 0.5rem', top: '-10px', right: '-10px', color: 'white' }}>
+                            <span className="cart-count-badge position-absolute" style={{ background: 'red', borderRadius: '80%', padding: '2px 5px', top: '-15px', right: '35px', color: 'white' }}>
                                 {cartCount}
                             </span>
                         )}
@@ -164,6 +160,7 @@ const Header = () => {
                     </Modal.Footer>
                 </Modal>
             </header>
+            </div>
         </>
     );
 };

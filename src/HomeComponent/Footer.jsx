@@ -30,13 +30,21 @@ const Footer = () => (
                 </div>
             ))}
         </div>
-        <div className="text-center my-4">
-            {footSocial.map(social => (
-                <span key={social.id} className="mx-2 text-white">
-                    {social.icon}
-                </span>
+        <hr />
+        
+            
+        
+        <div className="footerIcons">
+          <h4 className='copyRightInfo'>2024 | All Rights Reserved | Akhil Pendlimarry</h4>
+            <div className='iconContainer'>
+                {footSocial.map(social => (
+                    <span key={social.id} className="mx-2 text-white">
+                        {social.icon}
+                    </span>
             ))}
-        </div>
+            </div>
+        </div>    
+        
     </footer>
 );
 
