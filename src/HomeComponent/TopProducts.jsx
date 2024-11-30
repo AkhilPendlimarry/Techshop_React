@@ -11,9 +11,8 @@ const TopProducts = () => {
     const filteredProducts = (category === "All")
         ? productsData : productsData.filter(product => product.category === category);
 
-    const handleProductClick = (productId)=>{
-        const selectedProduct = productsData.find(product => product.id === productId);
-        navigate(`/DetailedProductPage/${productId}`, { state: selectedProduct });
+    const handleImageClick = (product)=>{
+        navigate(`/DetailedProductPage/${product.id}`, { state: product });
     }
     const displayProductCards = filteredProducts.slice(0,10);
     
@@ -28,18 +27,27 @@ const TopProducts = () => {
             </div>
             <div className="d-flex flex-wrap justify-content-center">
                 {displayProductCards.map(product => (
-                    <div className="card p-3 h-50 w-50 text-center" key={product.id} style={{ flex: "0 1 25%", margin: "10px", background: "#161717", color: "white", borderRadius: "8px" }}
-                     onClick={()=> handleProductClick(product.id)}>
-                        <img src={product.images[0]} alt={product.title} className="img-fluid mb-2" style={{ height: '100px', objectFit: 'contain' }} />
+                    <div className="card p-3 h-50 w-50 text-center" 
+                    key={product.id} 
+                    style={{ flex: "0 1 25%", margin: "10px", background: "#161717", color: "white", borderRadius: "8px" }}
+                     >
+                        <img src={product.images[0]} alt={product.title} className="img-fluid mb-2" 
+                        style={{ height: '100px', objectFit: 'contain', cursor:"pointer" }} 
+                        onClick={()=> handleImageClick(product)}/>
+                        
                         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '10px' }}>
-                            {[...Array(product.rateCount)].map((index) => (
+                            {[...Array(product.rateCount)].map((_,index) => (
                                 <span key={index} className="text-danger"><i className="fa-solid fa-star"></i></span>
                             ))}
                         </div>
                         <h5>{product.title}</h5>
                         <h6>{product.info}</h6>
                         <pre>${product.finalPrice} <span className='discount'>${product.originalPrice}</span></pre>
-                        <button className='btn btn-danger mt-2' onClick={() => addToCart(product)} >Add to Cart</button>
+                        <button className='btn btn-danger mt-2' onClick={(e) => {
+                            e.stopPropagation();
+                            addToCart(product);
+                          }}>
+                            Add to Cart</button>
                     </div>
                 ))}
 

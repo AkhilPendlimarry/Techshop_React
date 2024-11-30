@@ -1,7 +1,30 @@
+import React,{useState, useEffect} from 'react';
 import servicesData from '../data/servicesData';
 import { footMenu, footSocial } from '../data/footerData';
 
-const Footer = () => (
+const Footer = () => {
+    const [showTopArrow, setShowTopArrow] = useState(false);
+
+    // Show or hide the top-arrow based on scroll position
+    useEffect(() => {
+        const handleScroll = () => {
+        if (window.scrollY > 300) {
+            setShowTopArrow(true);
+        } else {
+            setShowTopArrow(false);
+        }
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+        window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
+    // Scroll to the top of the page
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+    return(
     <footer className="bg-dark text-white pt-5 bg-black">
         <div className="d-flex flex-column justify-content-center align-items-center text-center mb-4">
             <h4 className='text-center mb-4'> Our Advantages</h4>
@@ -44,8 +67,16 @@ const Footer = () => (
             ))}
             </div>
         </div>    
-        
+        {/* Top-Arrow Icon */}
+      {showTopArrow && (
+        <div
+          onClick={scrollToTop}
+          className="top-arrow" >
+          <i className="fa-solid fa-arrow-up"></i>
+        </div>
+      )}
     </footer>
 );
+};
 
 export default Footer;

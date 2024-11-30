@@ -4,6 +4,7 @@ import productsData from '../data/productsData';
 import './FeaturedProdCarousel.css';
 import { useNavigate } from "react-router-dom";
 
+
 const FeaturedProducts = () => {
   const navigate = useNavigate();
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -26,9 +27,8 @@ const FeaturedProducts = () => {
         setHoveredIndex(null);
     };
 
-    const handleProductClick=(productId)=>{
-      const selectedProduct = productsData.find((product)=> product.id === productId);
-      navigate(`/DetailedProductPage/${productId}`, {state: selectedProduct});
+    const handleImageClick=(product)=>{
+      navigate(`/DetailedProductPage/${product.id}`, {state: product});
     };
 
     return (
@@ -39,7 +39,7 @@ const FeaturedProducts = () => {
                       key={product.id} 
                       onMouseEnter={() => handleMouseEnter(index)}
                       onMouseLeave={handleMouseLeave}
-                      onClick={()=>handleProductClick(product.id)}
+                      
                     >
                         <div className="featured-item text-center">
                             
@@ -47,6 +47,8 @@ const FeaturedProducts = () => {
                                 src={product.images[0]}
                                 alt={product.title}
                                 className="carousel-image"
+                                onClick={()=>handleImageClick(product)}
+                                 style={{cursor: "pointer"}}
                             />
                             <h5 className="mt-3">{product.title}</h5>
                             <pre>${product.finalPrice}  <span className="discount">${product.originalPrice} </span></pre>

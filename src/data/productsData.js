@@ -369,7 +369,7 @@ const productsData = [
         ratings: 1011,
         rateCount: 5,
         path: "/product-details/",
-    },
+    },  
     {
         id: 18,
         images: [
