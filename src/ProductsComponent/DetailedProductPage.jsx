@@ -18,15 +18,15 @@ const DetailedProductPage = () => {
 
   useEffect(() => {
     if (location.state) {
-      const curentProduct = location.state;
-      setProduct(curentProduct);  // Set product from passed state
-      setSelectedImage(curentProduct.images[0]);  // Set the default selected image (first image)
+      const currentProduct = location.state;
+      setProduct(currentProduct);  // Set product from passed state
+      setSelectedImage(currentProduct.images[0]);  // Set the default selected image (first image)
       
       // const productReviews = reviewsData.filter((review) => review.id === location.state.id);
       // setReviews(productReviews);
 
       const related = productsData.filter(
-        (item)=> item.category === curentProduct.category && item.id !== curentProduct.id);
+        (item)=> item.category === currentProduct.category && item.id !== currentProduct.id);
       setRealatedProducts(related);
     }
   }, [location.state]);  // Run when the product data is passed
@@ -36,7 +36,7 @@ const DetailedProductPage = () => {
   };
 
   if (!product) {
-    return <div>Loading...</div>;  // Shows loading until product is available
+    return <div className="text-center my-5">Loading product details...</div>;  // Shows loading until product is available
   }
 
   return (
@@ -44,7 +44,7 @@ const DetailedProductPage = () => {
       <Header/>
       <div className="container mt-5">
       {/* Back Button */}
-      <button onClick={handleBack} className="btn btn-danger mb-4"><i class="fa-solid fa-arrow-left"></i></button>
+      <button onClick={handleBack} className="btn btn-danger mb-4"><i className="fa-solid fa-arrow-left"></i></button>
 
       <div className="row">
         {/* Column 1: All Product Images */}
@@ -103,8 +103,8 @@ const DetailedProductPage = () => {
             <hr />
             <p>Offers & Discounts</p>
                 <div className="optionsButtons">
-                  <button type="button" class="btn btn-outline-secondary">No Cost EMI on Credit Card</button>  
-                  <button type="button" class="btn btn-outline-secondary">Pay Later & Avail Cashback</button>
+                  <button type="button" className="btn btn-outline-secondary">No Cost EMI on Credit Card</button>  
+                  <button type="button" className="btn btn-outline-secondary">Pay Later & Avail Cashback</button>
                 </div> 
                  <br />
                  <hr />

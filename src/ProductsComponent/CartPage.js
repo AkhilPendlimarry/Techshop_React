@@ -14,7 +14,7 @@ const CartPage = () => {
     useEffect(() => {
         const storedCart = JSON.parse(localStorage.getItem('cartItems')) || [];
         setCartItems(storedCart);
-    }, [cartItems]);
+    }, []);
 
     const handleStartShopping = () => {
         navigate('/ProductsPage'); // Navigate to the All_products page when the button is clicked
